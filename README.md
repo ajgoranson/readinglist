@@ -14,4 +14,4 @@ You can then manage your books based on your read or unread books.
 
 You can also search books by keywords of the books to see if you have read it or not.
 
-You can slo change the read status on your books so when you read them you can update the program accordinly.
+You can slo change the read status on your books so when you read them you can update the program accordingly.
