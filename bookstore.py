@@ -189,15 +189,15 @@ class BookStore:
             con.row_factory = sqlite3.Row  # This row_factory allows access to data by row name 
             rows = con.execute(get_book_by_id_sql, (id,) )
             book_data = rows.fetchone()  # Get first result 
-            
+            con.close()
+            # returns None if the requested book_id doesn't exist
             if book_data:
                 book = Book(book_data['title'], book_data['author'], book_data['read'], book_data['rowid'])
-                    
-            con.close()            
+                return book
+            else:
+                return None 
+                      
             
-            return book 
-
-
         def book_search(self, term):
             """ Searches the store for books whose author or title contain a search term. Case insensitive.
             Makes partial matches, so a search for 'row' will match a book with author='JK Rowling' and a book with title='Rowing For Dummies'
