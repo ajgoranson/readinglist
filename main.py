@@ -26,7 +26,9 @@ def create_menu():
     menu.add_option('4', 'Show Read Books', show_read_books)
     menu.add_option('5', 'Show All Books', show_all_books)
     menu.add_option('6', 'Change Book Read Status', change_read)
+    menu.add_option('7', 'Delete Book by ID', delete_book)
     menu.add_option('Q', 'Quit', quit_program)
+    
 
     return menu
 
@@ -67,6 +69,17 @@ def change_read():
         book.save()
     else:
         ui.message(f'Book ID: {book_id} is not in the book list') # print a message for the user if book_id not found
+
+  
+def delete_book():
+    book_id = ui.get_book_id()
+    book = store.get_book_by_id(book_id)   
+    if book != None: 
+        book.delete()
+        ui.message(f'Book # {book_id} was deleted successfully.')
+    else:
+        ui.message(f'Book ID: {book_id} is not in the book list.')
+
 
 def quit_program():
     ui.message('Thanks and bye!')
