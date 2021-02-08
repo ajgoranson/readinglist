@@ -72,7 +72,7 @@ def change_read():
             read_status = 'NOT READ'
         ui.message(f'Read status changed to {read_status}')
 
-
+  
 def delete_book():
     book_id = ui.get_book_id()
     book = store.get_book_by_id(book_id)   
