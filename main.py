@@ -62,13 +62,15 @@ def search_book():
 def change_read():
     book_id = ui.get_book_id()
     book = store.get_book_by_id(book_id)  
-    # Doesn't allow the user to update read/not read unless book_id exists
-    if book:
+    if book != None:
         new_read = ui.get_read_value()     
         book.read = new_read 
         book.save()
-    else:
-        ui.message(f'Book ID: {book_id} is not in the book list') # print a message for the user if book_id not found
+        if new_read:
+            read_status = 'READ'
+        else:
+            read_status = 'NOT READ'
+        ui.message(f'Read status changed to {read_status}')
 
   
 def delete_book():
