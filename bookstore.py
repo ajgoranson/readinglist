@@ -104,8 +104,8 @@ class BookStore:
                     res = con.execute(insert_sql, (book.title, book.author, book.read) )
                     new_id = res.lastrowid  # Get the ID of the new row in the table 
                     book.id = new_id  # Set this book's ID
-            except sqlite3.IntegrityError as e:
-                raise BookError(f'Error - this book is already in the database. {book}') from e
+            except sqlite3.IntegrityError:
+                print('This book is already in the database.')
             finally:
                 con.close()
 
